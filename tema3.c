@@ -30,23 +30,28 @@ int main() {
     
     while (1)
     {
+        printf("\n0. iesire\n1. pozitia\n2. interschimbare\n3. afisare\noptiunea dumneavoastra este: ");
         scanf("%d", &opt);
         switch (opt)
         {
         case 1:
-            printf("introduceti pozitia la care se va face interschimbarea");
+            printf("\nintroduceti pozitia la care se va face interschimbarea: ");
             scanf("%d", &poz);
             break;
         case 2:
             gasireInterschimbare(vector, dim, poz);
-            printf("interschimbarea s-a efectuat");
+            printf("\ninterschimbarea s-a efectuat");
             break;
         case 3:
             for (int i = 0; i < dim; i++)
                 printf("%d ", vector[i]);
             break;
+        case 0:
+            free(vector);
+            exit(0);
+        break;
         default:
-            printf("optiune gresita !!!");
+            printf("\noptiune gresita !!!");
             break;
         }
     }
