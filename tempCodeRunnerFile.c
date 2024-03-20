@@ -3,41 +3,36 @@
 
 #define MAX 100
 
-int varf =-1;
 int stiva[MAX];
 
-int isEmpty(){ 
-    if (varf  == -1)
-        return 0;
-    else
-        return 1;
+
+int isEmpty(int varf){ 
+    return varf == -1;
 }
 
-int isFull(){ 
-    if(varf == MAX -1)
-        return 0;
-    else
-        return 1;
+int isFull(int varf){ 
+    return varf == MAX -1;
 }
 
 void push(int val){
-    if(isFull()){
+    int varf;
+    if(isFull(varf)){
         printf("Stiva este plina!!");
         return;
     }
     stiva[++varf] = val; 
 }
 
-int pop(){
-    if(isEmpty()){
+int pop(int varf){
+    if(isEmpty( varf)){
         printf("Stiva este goala!!");
         return -1;
     }
     return stiva[varf--];
 }
 
-int varfStiva(){
-    if(!isEmpty()){
+int varfStiva(int varf){
+    if(isEmpty(varf)){
         printf("Stiva este goala!!");
         return -1;
     }
@@ -45,15 +40,15 @@ int varfStiva(){
 }
 
 int main(){
-    int stocare = 0;
+    int stocare = 0,varf;
     push(6);
-    while (!isEmpty())
+    while (!isEmpty(varf))
     {
-        int top = varfStiva();
+        int top = varfStiva(varf);
         if(top >=12){
             stocare = top - 1;
-            pop();
-            pop();
+            pop(varf);
+            pop(varf);
             push(stocare);
         }
         else
