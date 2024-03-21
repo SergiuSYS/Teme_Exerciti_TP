@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-<<<<<<< HEAD
 #include <ctype.h>
 
 #define LUNGIME_STIVA 100
@@ -31,7 +30,7 @@ int getTop(int varf, int stiva[]) {
 
 void printStack(int varf, int stiva[]) {
     for (int i = 0; i <= varf; i++) {
-        printf("%c ", stiva[i]);
+        printf("%c", stiva[i]);
     }
     printf("\n");
 }
@@ -82,67 +81,5 @@ int main() {
     int varfST = EMPTY;
 
     postfix(FP, ST, varfFP, varfST, ecuatie); 
-=======
-
-#define MAX 100
-
-int varf =-1;
-int stiva[MAX];
-
-int isEmpty(){ 
-    if (varf  == -1)
-        return 0;
-    else
-        return 1;
-}
-
-int isFull(){ 
-    if(varf == MAX -1)
-        return 0;
-    else
-        return 1;
-}
-
-void push(int val){
-    if(isFull()){
-        printf("Stiva este plina!!");
-        return;
-    }
-    stiva[++varf] = val; 
-}
-
-int pop(){
-    if(isEmpty()){
-        printf("Stiva este goala!!");
-        return -1;
-    }
-    return stiva[varf--];
-}
-
-int varfStiva(){
-    if(!isEmpty()){
-        printf("Stiva este goala!!");
-        return -1;
-    }
-    return stiva[varf];
-}
-
-int main(){
-    int stocare = 0;
-    push(6);
-    while (!isEmpty())
-    {
-        int top = varfStiva();
-        if(top >=12){
-            stocare = top - 1;
-            pop();
-            pop();
-            push(stocare);
-        }
-        else
-            push(top + 2);
-    }
-    printf("%d", stocare);
->>>>>>> f51443f922411ca1af20b614a192f2292a25f1d6
     return 0;
 }
