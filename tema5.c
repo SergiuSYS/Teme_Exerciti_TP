@@ -38,7 +38,7 @@ void Print() {
 void Back(int k) {
     k = 0;
     Init(k);
-    while (k >= 0) { /
+    while (k >= 0) { 
         do
             v[k]++;
         while (!(v[k] >= n || Valid(k)));

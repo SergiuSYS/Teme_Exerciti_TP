@@ -7,7 +7,7 @@ int parcurgere(int vector[], int size){
     int i =0;
     printf("%d",vector[i]);
     if (i == size)
-        return;
+        return -1;
     return parcurgere(vector, i++);
     
 }
