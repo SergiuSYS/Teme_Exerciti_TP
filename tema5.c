@@ -1,33 +1,34 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #define N 6
 
-int v[N + 1]; 
-int blocked[N + 1][N + 1]; 
-int n; 
+int v[N]; 
+int blocked[N][N]; 
+int n;
 
 void Init(int k) {
-    v[k] = 0;
+    v[k] = -1; 
 }
 
 int Valid(int k) {
-    for (int i = 1; i < k; i++) 
-        if (v[i] == v[k] || abs(v[i] - v[k]) == abs(i - k)) 
-            return 0; 
-    if (blocked[k][v[k]]) 
+    for (int i = 0; i < k; i++) 
+        if (v[i] == v[k] || abs(v[i] - v[k]) == abs(i - k))
+            return 0;
+    if (blocked[k][v[k]])
         return 0;
     return 1;
 }
 
 void Print() {
     printf("\nSolution:\n");
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= n; j++) {
-            if (v[i] == j) 
+    for (int i = 0; i < n; i++) { 
+        for (int j = 0; j < n; j++) {
+            if (v[i] == j)
                 printf(" r ");
-            else if (blocked[i][j]) 
+            else if (blocked[i][j])
                 printf(" x ");
-            else 
+            else
                 printf(" _ ");
         }
         printf("\n");
@@ -35,22 +36,21 @@ void Print() {
 }
 
 void Back(int k) {
-    k = 1; 
+    k = 0;
     Init(k);
-    while (k > 0) {
+    while (k >= 0) { /
         do
             v[k]++;
-            while (!(v[k] > n || Valid(k))); 
+        while (!(v[k] >= n || Valid(k)));
 
-        if (v[k] <= n) { 
-            if (k == n)  
-                Print(); 
+        if (v[k] < n) { 
+            if (k == n - 1) 
+                Print();
             else {
-                k++; 
-                Init(k); 
+                k++;
+                Init(k);
             }
-        }
-        else
+        } else
             k--;
     }
 }
@@ -69,9 +69,7 @@ int main() {
         blocked[row][col] = 1;
     }
 
-    Back(1); 
+    Back(0); 
 
     return 0;
 }
-
-// modifica sa porneasca sirul de la 0 nu de la 1
