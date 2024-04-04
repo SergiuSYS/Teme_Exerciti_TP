@@ -1,18 +1,18 @@
 #include <stdio.h>
-#include <stdlib.h> // Pentru funcția abs()
+#include <stdlib.h>
 
 #define N 6
 
-int v[N]; // Modificăm dimensiunea vectorului v
-int blocked[N][N]; // Nu mai adăugăm 1 la dimensiunile matricei
+int v[N]; 
+int blocked[N][N]; 
 int n;
 
 void Init(int k) {
-    v[k] = -1; // Inițializăm elementele vectorului v cu -1
+    v[k] = -1; 
 }
 
 int Valid(int k) {
-    for (int i = 0; i < k; i++) // Modificăm bucla pentru a începe de la 0
+    for (int i = 0; i < k; i++) 
         if (v[i] == v[k] || abs(v[i] - v[k]) == abs(i - k))
             return 0;
     if (blocked[k][v[k]])
@@ -22,7 +22,7 @@ int Valid(int k) {
 
 void Print() {
     printf("\nSolution:\n");
-    for (int i = 0; i < n; i++) { // Modificăm buclele pentru a începe de la 0
+    for (int i = 0; i < n; i++) { 
         for (int j = 0; j < n; j++) {
             if (v[i] == j)
                 printf(" r ");
@@ -36,15 +36,15 @@ void Print() {
 }
 
 void Back(int k) {
-    k = 0; // Începem cu k = 0 în loc de k = 1
+    k = 0;
     Init(k);
-    while (k >= 0) { // Modificăm condiția pentru a permite k să fie 0
+    while (k >= 0) { 
         do
             v[k]++;
-        while (!(v[k] >= n || Valid(k))); // Modificăm condiția pentru a permite v[k] să fie egal cu n
+        while (!(v[k] >= n || Valid(k)));
 
-        if (v[k] < n) { // Modificăm condiția pentru a verifica dacă v[k] este strict mai mic decât n
-            if (k == n - 1) // Modificăm condiția pentru a verifica dacă k este n - 1
+        if (v[k] < n) { 
+            if (k == n - 1) 
                 Print();
             else {
                 k++;
@@ -69,7 +69,7 @@ int main() {
         blocked[row][col] = 1;
     }
 
-    Back(0); // Apelăm funcția Back cu k = 0
+    Back(0); 
 
     return 0;
 }
