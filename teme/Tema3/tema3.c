@@ -21,28 +21,13 @@ int pop(int* varf, int stiva[]) {
     return result;
 }
 
-int getTop(int varf, int stiva[]) {
-    if (varf != EMPTY)
-        return stiva[varf];
-    else
-        return -1;
-}
-
-void printStack(int varf, int stiva[]) {
-    for (int i = 0; i <= varf; i++) {
-        printf("%c", stiva[i]);
-    }
-    printf("\n");
-}
-
-int priority(char x) {
-    switch (x) {
-    case '(': return 0;
-    case '+':
-    case '-': return 1;
-    case '*':
-    case '/': return 2;
-    default: return -1;
+int evaluate(int op1, int op2, char operator) {
+    switch (operator) {
+        case '+': return op1 + op2;
+        case '-': return op1 - op2;
+        case '*': return op1 * op2;
+        case '/': return op1 / op2;  
+        default: return 0; 
     }
 }
 
@@ -51,7 +36,7 @@ void postfix(int FP[], int ST[], int varfFP, int varfST, char ecuatie[]) {
     e = ecuatie;
     while (*e != '\0') {
         if (isalnum(*e))
-            push(*e, &varfST, ST);
+            push(*e - '0', &varfST, ST);  
         else if (*e == '(')
             push(*e, &varfFP, FP);
         else if (*e == ')') {
@@ -67,7 +52,25 @@ void postfix(int FP[], int ST[], int varfFP, int varfST, char ecuatie[]) {
     }
     while (varfFP != EMPTY)
         push(pop(&varfFP, FP), &varfST, ST);
-    printStack(varfST, ST);
+}
+
+int evaluatePostfix(int ST[], int varfST) {
+    int op1, op2;
+    char operator;
+    int result;
+    while (varfST != EMPTY) {
+        if (isdigit(ST[varfST])) {
+            push(pop(&varfST, ST), &varfST, ST); 
+        }
+        else {
+            operator = pop(&varfST, ST);
+            op2 = pop(&varfST, ST);
+            op1 = pop(&varfST, ST);
+            result = evaluate(op1, op2, operator);
+            push(result, &varfST, ST);  
+        }
+    }
+    return pop(&varfST, ST);  
 }
 
 int main() {
@@ -80,6 +83,9 @@ int main() {
     int ST[LUNGIME_STIVA];
     int varfST = EMPTY;
 
-    postfix(FP, ST, varfFP, varfST, ecuatie); 
+    postfix(FP, ST, varfFP, varfST, ecuatie);
+
+    printf("Rezultatul este: %d\n", evaluatePostfix(ST, varfST));
+
     return 0;
 }
