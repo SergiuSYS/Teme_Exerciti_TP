@@ -73,6 +73,10 @@ int main() {
    // AICI INCEPE PROBLEMA CU FOTOGRAFIA
 
     Input_Fotografie = fopen("inputFotografie.txt","r");
+
+    // in fisier trebuie puse pe primul rand n, m cu spatiu intre EX 5 5 
+    // dupa se trece matricea care v-a fi parcursa 
+    
     fscanf(Input_Labirint,"%d %d",&h,&g);
     for (int i = 0; i < h; i++) {
         for (int j = 0; j < g; j++) {
