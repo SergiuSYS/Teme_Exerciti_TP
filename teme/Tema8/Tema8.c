@@ -1,4 +1,5 @@
 #include<stdio.h>
+#define MAX 1000
 
 // CHEMAREA FUNCTIILOR NECESARE PENTRU ALGORITM
 
