@@ -10,6 +10,7 @@ int a[MAXN][MAXM];
 
 int dx[] = { 0, 1, 1, 1, 0, -1, -1, -1 };
 int dy[] = { 1, 1, 0, -1, -1, -1, 0, 1 };
+
 int nrObj = 2;
 
 void Print(int i, int j) {
@@ -76,7 +77,7 @@ int main() {
 
     // in fisier trebuie puse pe primul rand n, m cu spatiu intre EX 5 5 
     // dupa se trece matricea care v-a fi parcursa 
-    
+
     fscanf(Input_Labirint,"%d %d",&h,&g);
     for (int i = 0; i < h; i++) {
         for (int j = 0; j < g; j++) {
@@ -93,6 +94,6 @@ int main() {
         }
     }
     printf("Numarul de obiecte gasite: %d\n", numObjectsFound);
-
+    fclose(Input_Fotografie);
     return 0;
 }
