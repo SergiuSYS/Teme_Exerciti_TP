@@ -1,7 +1,7 @@
 #include<stdio.h>
 #define MAX 1000
 
-// CHEMAReA FUNCTIILOR NECESARE PENTRU ALGORITM
+// CHEMAREA FUNCTIILOR NECESARE PENTRU ALGORITM
 
 void swap(int*x, int*y); // functie pentru interschimbare
 void quickSort(int array[], int lenght); // functie pentru utilizator pentru a nu a fi nevoit sa introduca valuare minima si maxima
