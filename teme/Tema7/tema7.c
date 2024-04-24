@@ -84,6 +84,7 @@ int main() {
             fscanf(Input_Fotografie, "%d", &b[i][j]);
         }
     }
+    
     for (k = 0; k < MAXN; k++) {
         for (l = 0; l < MAXM; l++) {
             if (b[k][l] == 1) {
