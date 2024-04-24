@@ -7,7 +7,7 @@
     int partitionare(int array[], int start, int end); 
 
 int main(){
-    int j = 0, num, a[MAX], length;
+    int j = 0, num, length;
     int *sir = NULL;  
 
     FILE *arrayInput = fopen("inputArray.txt", "r"); 
